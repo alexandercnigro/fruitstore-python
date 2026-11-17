@@ -17,8 +17,6 @@ from fruits import fruits
 app = Flask(__name__)
 port = 9090
 host = "0.0.0.0"
-tax_svc_host = getTaxHost()
-tax_svc_port = 9091
 
 def getTaxHost():
     taxhostvalue="taxservice-service.default.svc.cluster.local"     # default value for local k8s cluster
@@ -35,6 +33,10 @@ def getTaxHost():
             except:
                 pass
     return taxhostvalue
+
+
+tax_svc_host = getTaxHost()
+tax_svc_port = 9091
 
 @app.route('/health', methods=['GET'])
 def health():
